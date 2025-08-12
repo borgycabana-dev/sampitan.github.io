@@ -1,0 +1,475 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sampitan Beach Resort | Oceanfront Paradise in Mauban, Quezon</title>
+    <meta name="description" content="Experience tropical paradise at Sampitan Beach Resort in Cagsiay II, Mauban Quezon. Pristine beaches, luxury accommodations, and unforgettable experiences await.">
+    <meta name="keywords" content="beach resort Quezon, oceanfront resort Philippines, Mauban beach hotel, tropical paradise, beach vacation">
+    
+    <!-- Schema Markup -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "Resort",
+        "name": "Sampitan Beach Resort",
+        "description": "Luxury beach resort in Mauban, Quezon offering pristine beaches and exceptional service",
+        "address": {
+            "@type": "PostalAddress",
+            "streetAddress": "Cagsiay II",
+            "addressLocality": "Mauban",
+            "addressRegion": "Quezon",
+            "addressCountry": "Philippines"
+        },
+        "telephone": "+63-123-456-7890",
+        "url": "https://sampitanbeachresort.com",
+        "starRating": {
+            "@type": "Rating",
+            "ratingValue": "4.8",
+            "bestRating": "5"
+        }
+    }
+    </script>
+    
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        ocean: {
+                            50: '#f0f9ff',
+                            100: '#e0f2fe',
+                            500: '#0ea5e9',
+                            600: '#0284c7',
+                            700: '#0369a1'
+                        },
+                        sand: {
+                            100: '#fef3c7',
+                            200: '#fde68a',
+                            300: '#fcd34d'
+                        }
+                    },
+                    animation: {
+                        'float': 'float 6s ease-in-out infinite',
+                        'wave': 'wave 3s ease-in-out infinite',
+                        'fade-in': 'fadeIn 1s ease-out',
+                        'slide-up': 'slideUp 0.8s ease-out'
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        @keyframes float {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-20px); }
+        }
+        @keyframes wave {
+            0%, 100% { transform: translateX(0px); }
+            50% { transform: translateX(20px); }
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+        @keyframes slideUp {
+            from { transform: translateY(50px); opacity: 0; }
+            to { transform: translateY(0); opacity: 1; }
+        }
+        .parallax-bg {
+            background-attachment: fixed;
+            background-position: center;
+            background-repeat: no-repeat;
+            background-size: cover;
+        }
+        .glass-effect {
+            backdrop-filter: blur(10px);
+            background: rgba(255, 255, 255, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+        .hero-overlay {
+            background: linear-gradient(135deg, rgba(14, 165, 233, 0.7) 0%, rgba(59, 130, 246, 0.5) 50%, rgba(168, 85, 247, 0.3) 100%);
+        }
+        .section-fade {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.8s ease-out;
+        }
+        .section-fade.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    </style>
+</head>
+<body class="font-sans text-gray-800 overflow-x-hidden">
+
+    <!-- Cookie Consent Banner -->
+    <div id="cookieConsent" class="fixed bottom-0 left-0 right-0 bg-gray-900 text-white p-4 z-50 transform translate-y-full transition-transform duration-300">
+        <div class="max-w-6xl mx-auto flex flex-col md:flex-row items-center justify-between gap-4">
+            <p class="text-sm">We use cookies to enhance your experience. By continuing to visit this site you agree to our use of cookies.</p>
+            <div class="flex gap-2">
+                <button onclick="acceptCookies()" class="bg-ocean-500 hover:bg-ocean-600 px-4 py-2 rounded text-sm transition-colors">Accept</button>
+                <button onclick="declineCookies()" class="border border-white hover:bg-white hover:text-gray-900 px-4 py-2 rounded text-sm transition-colors">Decline</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Sticky Book Now Widget -->
+    <div id="stickyBooking" class="fixed bottom-4 right-4 z-40 md:hidden">
+        <button onclick="openBookingModal()" class="bg-gradient-to-r from-ocean-500 to-blue-600 text-white px-6 py-3 rounded-full shadow-lg animate-bounce hover:shadow-xl transition-shadow">
+            Book Now
+        </button>
+    </div>
+
+    <!-- Header/Navigation -->
+    <header class="fixed w-full top-0 z-50 transition-all duration-300" id="navbar">
+        <nav class="glass-effect px-4 py-3">
+            <div class="max-w-6xl mx-auto flex items-center justify-between">
+                <div class="flex items-center space-x-2">
+                    <div class="w-10 h-10 bg-gradient-to-br from-ocean-400 to-blue-600 rounded-full flex items-center justify-center">
+                        <span class="text-white font-bold text-lg">🏝️</span>
+                    </div>
+                    <h1 class="text-xl font-bold text-white">Sampitan Beach Resort</h1>
+                </div>
+                
+                <!-- Desktop Navigation -->
+                <div class="hidden md:flex items-center space-x-8">
+                    <a href="#home" class="text-white hover:text-sand-200 transition-colors">Home</a>
+                    <a href="#rooms" class="text-white hover:text-sand-200 transition-colors">Rooms</a>
+                    <a href="#amenities" class="text-white hover:text-sand-200 transition-colors">Amenities</a>
+                    <a href="#experiences" class="text-white hover:text-sand-200 transition-colors">Experiences</a>
+                    <a href="#reviews" class="text-white hover:text-sand-200 transition-colors">Reviews</a>
+                    <a href="#contact" class="text-white hover:text-sand-200 transition-colors">Contact</a>
+                    <button onclick="openBookingModal()" class="bg-gradient-to-r from-sand-200 to-sand-300 text-gray-800 px-6 py-2 rounded-full hover:shadow-lg transition-all transform hover:scale-105">
+                        Book Now
+                    </button>
+                </div>
+
+                <!-- Mobile Menu Button -->
+                <button id="mobileMenuBtn" class="md:hidden text-white">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+                    </svg>
+                </button>
+            </div>
+        </nav>
+
+        <!-- Mobile Menu -->
+        <div id="mobileMenu" class="md:hidden glass-effect hidden">
+            <div class="px-4 py-4 space-y-4">
+                <a href="#home" class="block text-white hover:text-sand-200 transition-colors">Home</a>
+                <a href="#rooms" class="block text-white hover:text-sand-200 transition-colors">Rooms</a>
+                <a href="#amenities" class="block text-white hover:text-sand-200 transition-colors">Amenities</a>
+                <a href="#experiences" class="block text-white hover:text-sand-200 transition-colors">Experiences</a>
+                <a href="#reviews" class="block text-white hover:text-sand-200 transition-colors">Reviews</a>
+                <a href="#contact" class="block text-white hover:text-sand-200 transition-colors">Contact</a>
+                <button onclick="openBookingModal()" class="w-full bg-gradient-to-r from-sand-200 to-sand-300 text-gray-800 px-6 py-2 rounded-full hover:shadow-lg transition-all">
+                    Book Now
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section id="home" class="relative min-h-screen flex items-center justify-center parallax-bg" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url('data:image/svg+xml,<svg xmlns=&quot;http://www.w3.org/2000/svg&quot; viewBox=&quot;0 0 1200 800&quot;><defs><linearGradient id=&quot;ocean&quot; x1=&quot;0%&quot; y1=&quot;0%&quot; x2=&quot;100%&quot; y2=&quot;100%&quot;><stop offset=&quot;0%&quot; stop-color=&quot;%23e0f2fe&quot;/><stop offset=&quot;50%&quot; stop-color=&quot;%230ea5e9&quot;/><stop offset=&quot;100%&quot; stop-color=&quot;%230284c7&quot;/></linearGradient></defs><rect width=&quot;100%&quot; height=&quot;100%&quot; fill=&quot;url(%23ocean)&quot;/><circle cx=&quot;200&quot; cy=&quot;150&quot; r=&quot;80&quot; fill=&quot;%23fde68a&quot; opacity=&quot;0.7&quot;/><circle cx=&quot;1000&quot; cy=&quot;200&quot; r=&quot;60&quot; fill=&quot;%23fcd34d&quot; opacity=&quot;0.5&quot;/><path d=&quot;M0,600 Q300,500 600,550 T1200,600 L1200,800 L0,800 Z&quot; fill=&quot;%23fef3c7&quot; opacity=&quot;0.8&quot;/></svg>')">
+        <div class="hero-overlay absolute inset-0"></div>
+        <div class="relative z-10 text-center text-white px-4 animate-fade-in">
+            <h1 class="text-4xl md:text-7xl font-bold mb-6 animate-slide-up">
+                Sampitan Beach Resort
+            </h1>
+            <p class="text-xl md:text-2xl mb-8 max-w-3xl mx-auto animate-slide-up" style="animation-delay: 0.2s">
+                Discover your tropical paradise in Cagsiay II, Mauban Quezon
+            </p>
+            <div class="flex flex-col sm:flex-row gap-4 justify-center animate-slide-up" style="animation-delay: 0.4s">
+                <button onclick="openBookingModal()" class="bg-gradient-to-r from-sand-200 to-sand-300 text-gray-800 px-8 py-4 rounded-full text-lg font-semibold hover:shadow-xl transition-all transform hover:scale-105">
+                    Book Your Stay
+                </button>
+                <button onclick="document.getElementById('experiences').scrollIntoView({behavior: 'smooth'})" class="border-2 border-white text-white px-8 py-4 rounded-full text-lg font-semibold hover:bg-white hover:text-gray-800 transition-all">
+                    Explore Experiences
+                </button>
+            </div>
+        </div>
+        
+        <!-- Scroll Indicator -->
+        <div class="absolute bottom-8 left-1/2 transform -translate-x-1/2 animate-bounce">
+            <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 14l-7 7m0 0l-7-7m7 7V3"></path>
+            </svg>
+        </div>
+    </section>
+
+    <!-- Special Offers Banner -->
+    <div class="bg-gradient-to-r from-orange-400 to-pink-500 text-white py-3 text-center">
+        <div class="max-w-6xl mx-auto px-4">
+            <p class="font-semibold">🌟 Limited Time: 30% OFF Early Bird Bookings | Book 30 days in advance and save! 🌟</p>
+        </div>
+    </div>
+
+    <!-- Rooms Section -->
+    <section id="rooms" class="py-20 bg-gray-50">
+        <div class="max-w-6xl mx-auto px-4">
+            <div class="text-center mb-16 section-fade">
+                <h2 class="text-4xl font-bold mb-4">Luxury Accommodations</h2>
+                <p class="text-xl text-gray-600 max-w-2xl mx-auto">Choose from our carefully designed rooms, each offering breathtaking ocean views and modern amenities</p>
+            </div>
+
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Ocean View Suite -->
+                <div class="bg-white rounded-2xl shadow-xl overflow-hidden transform hover:scale-105 transition-all duration-300 section-fade">
+                    <div class="h-64 bg-gradient-to-br from-ocean-400 to-blue-500 relative">
+                        <div class="absolute inset-0 bg-black bg-opacity-20"></div>
+                        <div class="absolute bottom-4 left-4 text-white">
+                            <span class="text-2xl">🌊</span>
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-2xl font-bold mb-2">Ocean View Suite</h3>
+                        <p class="text-gray-600 mb-4">Panoramic ocean views, king bed, private balcony</p>
+                        <div class="flex justify-between items-center">
+                            <span class="text-3xl font-bold text-ocean-600">₱8,500<span class="text-sm text-gray-500">/night</span></span>
+                            <button onclick="openBookingModal('ocean-suite')" class="bg-ocean-500 text-white px-4 py-2 rounded-lg hover:bg-ocean-600 transition-colors">
+                                Book Now
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Beach Villa -->
+                <div class="bg-white rounded-2xl shadow-xl overflow-hidden transform hover:scale-105 transition-all duration-300 section-fade">
+                    <div class="h-64 bg-gradient-to-br from-sand-200 to-orange-400 relative">
+                        <div class="absolute inset-0 bg-black bg-opacity-20"></div>
+                        <div class="absolute bottom-4 left-4 text-white">
+                            <span class="text-2xl">🏖️</span>
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-2xl font-bold mb-2">Beach Villa</h3>
+                        <p class="text-gray-600 mb-4">Private beach access, outdoor shower, garden view</p>
+                        <div class="flex justify-between items-center">
+                            <span class="text-3xl font-bold text-ocean-600">₱12,000<span class="text-sm text-gray-500">/night</span></span>
+                            <button onclick="openBookingModal('beach-villa')" class="bg-ocean-500 text-white px-4 py-2 rounded-lg hover:bg-ocean-600 transition-colors">
+                                Book Now
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Family Bungalow -->
+                <div class="bg-white rounded-2xl shadow-xl overflow-hidden transform hover:scale-105 transition-all duration-300 section-fade">
+                    <div class="h-64 bg-gradient-to-br from-green-400 to-teal-500 relative">
+                        <div class="absolute inset-0 bg-black bg-opacity-20"></div>
+                        <div class="absolute bottom-4 left-4 text-white">
+                            <span class="text-2xl">👨‍👩‍👧‍👦</span>
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-2xl font-bold mb-2">Family Bungalow</h3>
+                        <p class="text-gray-600 mb-4">Spacious layout, 2 bedrooms, kitchenette</p>
+                        <div class="flex justify-between items-center">
+                            <span class="text-3xl font-bold text-ocean-600">₱15,000<span class="text-sm text-gray-500">/night</span></span>
+                            <button onclick="openBookingModal('family-bungalow')" class="bg-ocean-500 text-white px-4 py-2 rounded-lg hover:bg-ocean-600 transition-colors">
+                                Book Now
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Amenities Section -->
+    <section id="amenities" class="py-20 bg-white">
+        <div class="max-w-6xl mx-auto px-4">
+            <div class="text-center mb-16 section-fade">
+                <h2 class="text-4xl font-bold mb-4">World-Class Amenities</h2>
+                <p class="text-xl text-gray-600 max-w-2xl mx-auto">Everything you need for the perfect beach getaway</p>
+            </div>
+
+            <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+                <div class="text-center group section-fade">
+                    <div class="w-20 h-20 bg-gradient-to-br from-ocean-400 to-blue-500 rounded-full flex items-center justify-center mx-auto mb-4 group-hover:scale-110 transition-transform">
+                        <span class="text-3xl">🏊</span>
+                    </div>
+                    <h3 class="text-xl font-semibold mb-2">Infinity Pool</h3>
+                    <p class="text-gray-600">Stunning infinity pool overlooking the ocean</p>
+                </div>
+
+                <div class="text-center group section-fade">
+                    <div class="w-20 h-20 bg-gradient-to-br from-green-400 to-teal-500 rounded-full flex items-center justify-center mx-auto mb-4 group-hover:scale-110 transition-transform">
+                        <span class="text-3xl">🍽️</span>
+                    </div>
+                    <h3 class="text-xl font-semibold mb-2">Beachfront Dining</h3>
+                    <p class="text-gray-600">Fresh seafood and international cuisine</p>
+                </div>
+
+                <div class="text-center group section-fade">
+                    <div class="w-20 h-20 bg-gradient-to-br from-purple-400 to-pink-500 rounded-full flex items-center justify-center mx-auto mb-4 group-hover:scale-110 transition-transform">
+                        <span class="text-3xl">💆</span>
+                    </div>
+                    <h3 class="text-xl font-semibold mb-2">Spa & Wellness</h3>
+                    <p class="text-gray-600">Rejuvenating treatments with ocean views</p>
+                </div>
+
+                <div class="text-center group section-fade">
+                    <div class="w-20 h-20 bg-gradient-to-br from-orange-400 to-red-500 rounded-full flex items-center justify-center mx-auto mb-4 group-hover:scale-110 transition-transform">
+                        <span class="text-3xl">🏄</span>
+                    </div>
+                    <h3 class="text-xl font-semibold mb-2">Water Sports</h3>
+                    <p class="text-gray-600">Kayaking, snorkeling, and beach activities</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Experiences Section -->
+    <section id="experiences" class="py-20 bg-gradient-to-br from-ocean-50 to-blue-50">
+        <div class="max-w-6xl mx-auto px-4">
+            <div class="text-center mb-16 section-fade">
+                <h2 class="text-4xl font-bold mb-4">Unforgettable Experiences</h2>
+                <p class="text-xl text-gray-600 max-w-2xl mx-auto">Create memories that will last a lifetime</p>
+            </div>
+
+            <!-- Activities Calendar Widget -->
+            <div class="bg-white rounded-2xl shadow-xl p-6 mb-12 section-fade">
+                <h3 class="text-2xl font-bold mb-4 text-center">Today's Activities</h3>
+                <div class="grid md:grid-cols-3 gap-4">
+                    <div class="bg-gradient-to-r from-orange-100 to-yellow-100 p-4 rounded-lg">
+                        <div class="font-semibold text-orange-800">6:00 AM</div>
+                        <div class="text-orange-700">Sunrise Yoga on Beach</div>
+                    </div>
+                    <div class="bg-gradient-to-r from-blue-100 to-teal-100 p-4 rounded-lg">
+                        <div class="font-semibold text-blue-800">10:00 AM</div>
+                        <div class="text-blue-700">Snorkeling Adventure</div>
+                    </div>
+                    <div class="bg-gradient-to-r from-purple-100 to-pink-100 p-4 rounded-lg">
+                        <div class="font-semibold text-purple-800">7:00 PM</div>
+                        <div class="text-purple-700">Beach Bonfire & BBQ</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="grid md:grid-cols-2 gap-12">
+                <!-- Beach Activities -->
+                <div class="section-fade">
+                    <h3 class="text-2xl font-bold mb-6">Beach Activities</h3>
+                    <div class="space-y-4">
+                        <div class="flex items-center space-x-4 bg-white p-4 rounded-lg shadow-md hover:shadow-lg transition-shadow">
+                            <span class="text-2xl">🤿</span>
+                            <div>
+                                <h4 class="font-semibold">Snorkeling Tours</h4>
+                                <p class="text-gray-600">Explore vibrant coral reefs</p>
+                            </div>
+                            <span class="ml-auto text-ocean-600 font-bold">₱1,500</span>
+                        </div>
+                        <div class="flex items-center space-x-4 bg-white p-4 rounded-lg shadow-md hover:shadow-lg transition-shadow">
+                            <span class="text-2xl">🚣</span>
+                            <div>
+                                <h4 class="font-semibold">Kayak Rental</h4>
+                                <p class="text-gray-600">Paddle along the coastline</p>
+                            </div>
+                            <span class="ml-auto text-ocean-600 font-bold">₱800/hr</span>
+                        </div>
+                        <div class="flex items-center space-x-4 bg-white p-4 rounded-lg shadow-md hover:shadow-lg transition-shadow">
+                            <span class="text-2xl">🏖️</span>
+                            <div>
+                                <h4 class="font-semibold">Beach Volleyball</h4>
+                                <p class="text-gray-600">Fun tournaments daily</p>
+                            </div>
+                            <span class="ml-auto text-green-600 font-bold">FREE</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Wellness & Spa -->
+                <div class="section-fade">
+                    <h3 class="text-2xl font-bold mb-6">Wellness & Spa</h3>
+                    <div class="space-y-4">
+                        <div class="flex items-center space-x-4 bg-white p-4 rounded-lg shadow-md hover:shadow-lg transition-shadow">
+                            <span class="text-2xl">💆‍♀️</span>
+                            <div>
+                                <h4 class="font-semibold">Ocean Breeze Massage</h4>
+                                <p class="text-gray-600">Beachside relaxation therapy</p>
+                            </div>
+                            <span class="ml-auto text-ocean-600 font-bold">₱2,500</span>
+                        </div>
+                        <div class="flex items-center space-x-4 bg-white p-4 rounded-lg shadow-md hover:shadow-lg transition-shadow">
+                            <span class="text-2xl">🧘</span>
+                            <div>
+                                <h4 class="font-semibold">Sunrise Yoga</h4>
+                                <p class="text-gray-600">Daily sessions on the beach</p>
+                            </div>
+                            <span class="ml-auto text-ocean-600 font-bold">₱500</span>
+                        </div>
+                        <div class="flex items-center space-x-4 bg-white p-4 rounded-lg shadow-md hover:shadow-lg transition-shadow">
+                            <span class="text-2xl">🌊</span>
+                            <div>
+                                <h4 class="font-semibold">Meditation Sessions</h4>
+                                <p class="text-gray-600">Find inner peace by the sea</p>
+                            </div>
+                            <span class="ml-auto text-green-600 font-bold">FREE</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Tide & Weather Widget -->
+            <div class="mt-12 bg-white rounded-2xl shadow-xl p-6 section-fade">
+                <div class="grid md:grid-cols-2 gap-8">
+                    <div>
+                        <h3 class="text-xl font-bold mb-4">🌊 Tide Information</h3>
+                        <div class="space-y-2">
+                            <div class="flex justify-between">
+                                <span>High Tide:</span>
+                                <span class="font-semibold">6:24 AM (1.8m)</span>
+                            </div>
+                            <div class="flex justify-between">
+                                <span>Low Tide:</span>
+                                <span class="font-semibold">12:45 PM (0.3m)</span>
+                            </div>
+                            <div class="flex justify-between">
+                                <span>Next High:</span>
+                                <span class="font-semibold">7:12 PM (1.9m)</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div>
+                        <h3 class="text-xl font-bold mb-4">🌤️ Weather Today</h3>
+                        <div class="space-y-2">
+                            <div class="flex justify-between">
+                                <span>Temperature:</span>
+                                <span class="font-semibold">28°C - 32°C</span>
+                            </div>
+                            <div class="flex justify-between">
+                                <span>Conditions:</span>
+                                <span class="font-semibold">Partly Cloudy</span>
+                            </div>
+                            <div class="flex justify-between">
+                                <span>UV Index:</span>
+                                <span class="font-semibold">High (8)</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Reviews Section -->
+    <section id="reviews" class="py-20 bg-gray-50">
+        <div class="max-w-6xl mx-auto px-4">
+            <div class="text-center mb-16 section-fade">
+                <h2 class="text-4xl font-bold mb-4">Guest Reviews</h2>
+                <div class="flex items-center justify-center mb-4">
+                    <div class="flex text-yellow-400 text-2xl">★★★★★</div>
+                    <span class="ml-2 text-xl font-semibold">4.8/5</span>
+                    <span class="ml-2 text-gray-600">(247 reviews)</span>
+                </div>
+                <p class="text-xl text-gray-600">See what our guests are saying about their stay</p>
+            </div>
+
+            <div class="grid md:grid-cols-3 gap-8">
+                <!-- Review 1 -->
+                <div class="bg-white rounded-2xl shadow-xl p-6 section-fade">
+                    <div class="flex items-center mb-4">
+                        <div class="w-12
